@@ -1,3 +1,8 @@
+/* ────────────────────────────────────────────────
+   GRETIAS — Theme: Royal Purple
+   Usage: replace app/globals.css content with this
+   ──────────────────────────────────────────────── */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -8,27 +13,27 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0D0800;
+  background-color: #07030F;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #D97706 0%, #FBBF24 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, #FBBF24 0%, #EA580C 100%);
+  background: linear-gradient(135deg, #A78BFA 0%, #DB2777 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #0D0800, #1A1000, #0D0800, #150900);
+  background: linear-gradient(-45deg, #07030F, #110720, #07030F, #0A0518);
   background-size: 400% 400%;
   animation: gradient-shift 18s ease infinite;
 }
@@ -48,18 +53,18 @@ body {
 }
 
 .glow-card:hover {
-  border-color: rgba(217, 119, 6, 0.4);
-  background: rgba(217, 119, 6, 0.06);
-  box-shadow: 0 0 32px rgba(217, 119, 6, 0.14);
+  border-color: rgba(124, 58, 237, 0.45);
+  background: rgba(124, 58, 237, 0.06);
+  box-shadow: 0 0 32px rgba(124, 58, 237, 0.15);
   transform: translateY(-4px);
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0D0800; }
-::-webkit-scrollbar-thumb { background: #D97706; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #07030F; }
+::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 3px; }
 
 .btn-primary {
-  background: linear-gradient(135deg, #D97706 0%, #EA580C 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
   color: white;
   padding: 12px 28px;
   border-radius: 50px;
@@ -76,7 +81,7 @@ body {
 .btn-primary:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.45);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.45);
 }
 
 .btn-outline {
@@ -95,26 +100,27 @@ body {
 }
 
 .btn-outline:hover {
-  border-color: #D97706;
-  background: rgba(217, 119, 6, 0.1);
+  border-color: #7C3AED;
+  background: rgba(124, 58, 237, 0.1);
 }
 
 .section-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(217, 119, 6, 0.12);
-  border: 1px solid rgba(217, 119, 6, 0.3);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.3);
   padding: 6px 16px;
   border-radius: 50px;
   font-size: 13px;
   font-weight: 600;
-  color: #FBBF24;
+  color: #A78BFA;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
-.text-blue-400 { color: #FBBF24 !important; }
-.bg-blue-500\/10 { background: rgba(217, 119, 6, 0.1) !important; }
-.hover\:text-blue-400:hover { color: #FBBF24 !important; }
+/* Navbar active link */
+.text-blue-400 { color: #A78BFA !important; }
+.bg-blue-500\/10 { background: rgba(124, 58, 237, 0.1) !important; }
+.hover\:text-blue-400:hover { color: #A78BFA !important; }

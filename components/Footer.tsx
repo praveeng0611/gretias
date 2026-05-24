@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
                 G
               </div>
               <span className="text-white font-bold text-lg">Gretias</span>
@@ -29,7 +29,7 @@ export default function Footer() {
                 { href: '/contact', label: 'Contact' },
               ].map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
+                  <Link href={href} className="text-gray-400 hover:text-amber-400 text-sm transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -42,18 +42,18 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4 text-sm">Get in Touch</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="mailto:hello@gretias.com" className="hover:text-blue-400 transition-colors">
+                <a href="mailto:hello@gretias.com" className="hover:text-amber-400 transition-colors">
                   hello@gretias.com
                 </a>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-blue-400 transition-colors">
+                <Link href="/contact" className="hover:text-amber-400 transition-colors">
                   Send us a message →
                 </Link>
               </li>
             </ul>
             <p className="text-gray-500 text-xs mt-4">
-              A <a href="https://gnosisolabs.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Gnosiso Labs</a> initiative
+              A <a href="https://gnosisolabs.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">Gnosiso Labs</a> initiative
             </p>
           </div>
         </div>

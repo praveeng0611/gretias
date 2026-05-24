@@ -175,7 +175,7 @@ export default function Contact() {
                   'Confidentiality is taken seriously from day one',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-gray-400">
-                    <span className="text-blue-400 mt-0.5">✓</span>
+                    <span className="text-amber-400 mt-0.5">✓</span>
                     {item}
                   </li>
                 ))}

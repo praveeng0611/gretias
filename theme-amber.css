@@ -1,3 +1,8 @@
+/* ────────────────────────────────────────────────
+   GRETIAS — Theme: Amber & Fire
+   Usage: replace app/globals.css content with this
+   ──────────────────────────────────────────────── */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -115,6 +120,7 @@ body {
   margin-bottom: 16px;
 }
 
+/* Navbar active link */
 .text-blue-400 { color: #FBBF24 !important; }
 .bg-blue-500\/10 { background: rgba(217, 119, 6, 0.1) !important; }
 .hover\:text-blue-400:hover { color: #FBBF24 !important; }

@@ -37,7 +37,7 @@ export default function About() {
       </section>
 
       {/* Story */}
-      <section className="py-20 px-6 bg-[#0A1020]">
+      <section className="py-20 px-6 bg-[#120900]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
           <div>
             <div className="section-label">Our Story</div>
@@ -92,7 +92,7 @@ export default function About() {
       </section>
 
       {/* Approach */}
-      <section className="py-20 px-6 bg-[#0A1020]">
+      <section className="py-20 px-6 bg-[#120900]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <div className="section-label mx-auto w-fit">Our Approach</div>

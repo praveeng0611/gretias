@@ -6,7 +6,7 @@ const services = [
     title: 'Automotive Consulting',
     desc: 'Strategic advisory for OEMs, dealerships, and automotive enterprises — from digital transformation to operational excellence and market expansion.',
     points: ['Digital transformation roadmaps', 'Operational efficiency', 'Market entry strategy', 'Dealer network optimisation'],
-    color: 'from-blue-600 to-blue-400',
+    color: 'from-amber-600 to-amber-400',
     glow: 'rgba(37,99,235,0.15)',
   },
   {
@@ -14,7 +14,7 @@ const services = [
     title: 'Auto Ancillary Advisory',
     desc: 'End-to-end advisory for auto component manufacturers — supply chain resilience, process engineering, vendor development and quality systems.',
     points: ['Supply chain strategy', 'Vendor development', 'Process optimisation', 'Quality & compliance'],
-    color: 'from-cyan-600 to-cyan-400',
+    color: 'from-orange-600 to-orange-400',
     glow: 'rgba(6,182,212,0.15)',
   },
   {
@@ -22,7 +22,7 @@ const services = [
     title: 'IT Advisory',
     desc: 'Niche IT consulting for specialised industries — technology selection, digital roadmaps, ERP/CRM implementations, and system integration.',
     points: ['Technology strategy', 'ERP / CRM advisory', 'Systems integration', 'Digital roadmapping'],
-    color: 'from-indigo-600 to-indigo-400',
+    color: 'from-yellow-600 to-amber-400',
     glow: 'rgba(79,70,229,0.15)',
   },
 ]
@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-white/5 bg-[#0A1020]">
+      <section className="border-y border-white/5 bg-[#120900]">
         <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map(({ value, label }) => (
@@ -111,7 +111,7 @@ export default function Home() {
                 <ul className="mt-auto space-y-2">
                   {points.map((p) => (
                     <li key={p} className="flex items-start gap-2 text-sm text-gray-300">
-                      <span className="text-blue-400 mt-0.5">✓</span>
+                      <span className="text-amber-400 mt-0.5">✓</span>
                       {p}
                     </li>
                   ))}
@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* Why Gretias */}
-      <section className="py-24 px-6 bg-[#0A1020]">
+      <section className="py-24 px-6 bg-[#120900]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <div className="section-label mx-auto w-fit">Why Gretias</div>

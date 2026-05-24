@@ -1,3 +1,8 @@
+/* ────────────────────────────────────────────────
+   GRETIAS — Theme: Emerald & Teal
+   Usage: replace app/globals.css content with this
+   ──────────────────────────────────────────────── */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -8,27 +13,27 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0D0800;
+  background-color: #070F0A;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #D97706 0%, #FBBF24 100%);
+  background: linear-gradient(135deg, #059669 0%, #34D399 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, #FBBF24 0%, #EA580C 100%);
+  background: linear-gradient(135deg, #34D399 0%, #0D9488 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #0D0800, #1A1000, #0D0800, #150900);
+  background: linear-gradient(-45deg, #070F0A, #0A1E12, #070F0A, #071510);
   background-size: 400% 400%;
   animation: gradient-shift 18s ease infinite;
 }
@@ -48,18 +53,18 @@ body {
 }
 
 .glow-card:hover {
-  border-color: rgba(217, 119, 6, 0.4);
-  background: rgba(217, 119, 6, 0.06);
-  box-shadow: 0 0 32px rgba(217, 119, 6, 0.14);
+  border-color: rgba(5, 150, 105, 0.4);
+  background: rgba(5, 150, 105, 0.05);
+  box-shadow: 0 0 32px rgba(5, 150, 105, 0.12);
   transform: translateY(-4px);
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0D0800; }
-::-webkit-scrollbar-thumb { background: #D97706; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #070F0A; }
+::-webkit-scrollbar-thumb { background: #059669; border-radius: 3px; }
 
 .btn-primary {
-  background: linear-gradient(135deg, #D97706 0%, #EA580C 100%);
+  background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
   color: white;
   padding: 12px 28px;
   border-radius: 50px;
@@ -76,7 +81,7 @@ body {
 .btn-primary:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.45);
+  box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
 }
 
 .btn-outline {
@@ -95,26 +100,33 @@ body {
 }
 
 .btn-outline:hover {
-  border-color: #D97706;
-  background: rgba(217, 119, 6, 0.1);
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.1);
 }
 
 .section-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(217, 119, 6, 0.12);
-  border: 1px solid rgba(217, 119, 6, 0.3);
+  background: rgba(5, 150, 105, 0.12);
+  border: 1px solid rgba(5, 150, 105, 0.3);
   padding: 6px 16px;
   border-radius: 50px;
   font-size: 13px;
   font-weight: 600;
-  color: #FBBF24;
+  color: #34D399;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
-.text-blue-400 { color: #FBBF24 !important; }
-.bg-blue-500\/10 { background: rgba(217, 119, 6, 0.1) !important; }
-.hover\:text-blue-400:hover { color: #FBBF24 !important; }
+/* Navbar active link */
+.text-blue-400 { color: #34D399 !important; }
+.bg-blue-500\/10 { background: rgba(5, 150, 105, 0.1) !important; }
+.hover\:text-blue-400:hover { color: #34D399 !important; }
+
+/* Footer link hover */
+.hover\:text-blue-400:hover { color: #34D399 !important; }
+
+/* Service check marks */
+.text-blue-400 { color: #34D399 !important; }

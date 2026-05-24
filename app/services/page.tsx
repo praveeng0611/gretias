@@ -12,7 +12,7 @@ const services = [
     icon: '🚗',
     title: 'Automotive Consulting',
     tagline: 'For OEMs, dealerships, and automotive enterprises',
-    color: 'from-blue-600 to-blue-400',
+    color: 'from-amber-600 to-amber-400',
     overview: 'The automotive sector is undergoing its most significant transformation in a century — electrification, software-defined vehicles, changing consumer behaviour, and supply chain disruption. Gretias helps automotive businesses navigate this inflection point with clear-eyed strategy and practical execution support.',
     offerings: [
       {
@@ -49,7 +49,7 @@ const services = [
     icon: '⚙️',
     title: 'Auto Ancillary Advisory',
     tagline: 'For auto component manufacturers and Tier 1/2 suppliers',
-    color: 'from-cyan-600 to-cyan-400',
+    color: 'from-orange-600 to-orange-400',
     overview: 'Auto ancillary manufacturers face intense pressure — OEM cost-down demands, quality certification requirements, supply chain volatility, and the need to diversify beyond traditional ICE components. Gretias brings sector-specific expertise to help suppliers build resilience and grow.',
     offerings: [
       {
@@ -86,7 +86,7 @@ const services = [
     icon: '💡',
     title: 'IT Advisory',
     tagline: 'Niche IT consulting for specialised industry needs',
-    color: 'from-indigo-600 to-indigo-400',
+    color: 'from-yellow-600 to-amber-400',
     overview: 'Technology decisions made without deep domain context lead to expensive misalignments. Gretias provides IT advisory that is grounded in your industry realities — whether you are selecting a new ERP, designing a data strategy, or evaluating a digital investment.',
     offerings: [
       {
@@ -141,7 +141,7 @@ export default function Services() {
         <section
           key={id}
           id={id}
-          className={`py-20 px-6 ${idx % 2 === 1 ? 'bg-[#0A1020]' : ''}`}
+          className={`py-20 px-6 ${idx % 2 === 1 ? 'bg-[#120900]' : ''}`}
         >
           <div className="max-w-6xl mx-auto">
             {/* Header */}
@@ -168,7 +168,7 @@ export default function Services() {
                   <ul className="space-y-2">
                     {points.map((p) => (
                       <li key={p} className="flex items-start gap-2 text-sm text-gray-400">
-                        <span className="text-blue-400 mt-0.5 flex-shrink-0">→</span>
+                        <span className="text-amber-400 mt-0.5 flex-shrink-0">→</span>
                         {p}
                       </li>
                     ))}
