@@ -71,16 +71,17 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="navbar fixed top-0 left-0 right-0 z-50">
+      {/* ── Navbar bar ── */}
+      <header className="navbar fixed top-0 left-0 right-0" style={{ zIndex: 9999 }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 min-w-0" onClick={() => setOpen(false)}>
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="w-8 h-8 flex-shrink-0 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-sm shadow">
               G
             </div>
-            <span className="font-extrabold text-base sm:text-lg truncate" style={{ color: 'var(--text)' }}>
-              <span className="hidden xs:inline">Gretias </span>Consulting
+            <span className="font-extrabold text-base sm:text-lg" style={{ color: 'var(--text)' }}>
+              Gretias<span className="hidden sm:inline"> Consulting</span>
             </span>
           </Link>
 
@@ -101,14 +102,11 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right controls */}
+          {/* Right side */}
           <div className="flex items-center gap-2 flex-shrink-0">
-
-            {/* Language switcher — desktop only */}
-            <div
-              className="hidden md:flex items-center gap-0.5 rounded-lg px-1 py-1"
-              style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)' }}
-            >
+            {/* Language — desktop only */}
+            <div className="hidden md:flex items-center gap-0.5 rounded-lg px-1 py-1"
+              style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)' }}>
               {LANGS.map((l) => (
                 <button key={l} onClick={() => setLang(l)} className={`lang-btn ${lang === l ? 'active' : ''}`}>
                   {l.toUpperCase()}
@@ -116,8 +114,8 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Theme toggle */}
-            <button className="theme-toggle" onClick={toggle} aria-label="Toggle theme">
+            {/* Theme toggle — desktop only */}
+            <button className="theme-toggle hidden md:flex" onClick={toggle} aria-label="Toggle theme">
               {theme === 'light' ? <MoonIcon /> : <SunIcon />}
             </button>
 
@@ -126,109 +124,130 @@ export default function Navbar() {
               {tr.nav.cta}
             </Link>
 
-            {/* Hamburger */}
+            {/* Hamburger — mobile only */}
             <button
-              className="md:hidden theme-toggle"
-              onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
-              aria-expanded={open}
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl"
+              style={{ background: 'var(--accent-bg)', color: 'var(--accent)', border: '1.5px solid var(--accent-border)' }}
             >
-              {open ? <CloseIcon /> : <MenuIcon />}
+              <MenuIcon />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile full-screen overlay */}
+      {/* ── Mobile full-screen menu ── */}
       {open && (
         <div
-          className="md:hidden fixed inset-0 z-40"
-          style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
-          onClick={() => setOpen(false)}
-        />
-      )}
-
-      {/* Mobile slide-down drawer */}
-      <div
-        className="md:hidden fixed left-0 right-0 z-40"
-        style={{
-          top: '64px',
-          background: 'var(--bg)',
-          borderBottom: '1px solid var(--border)',
-          boxShadow: '0 16px 48px rgba(0,0,0,0.18)',
-          transform: open ? 'translateY(0)' : 'translateY(-110%)',
-          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          pointerEvents: open ? 'auto' : 'none',
-        }}
-      >
-        <nav className="px-4 pt-4 pb-6 flex flex-col">
+          className="md:hidden fixed inset-0 flex flex-col"
+          style={{ zIndex: 99999, background: theme === 'dark' ? '#0D0800' : '#ffffff' }}
+        >
+          {/* Menu header */}
+          <div
+            className="flex items-center justify-between px-5 h-16 flex-shrink-0"
+            style={{ borderBottom: '1px solid var(--border)' }}
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-sm">
+                G
+              </div>
+              <span className="font-extrabold text-base" style={{ color: 'var(--text)' }}>
+                Gretias Consulting
+              </span>
+            </div>
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="flex items-center justify-center w-10 h-10 rounded-xl"
+              style={{ background: 'var(--accent-bg)', color: 'var(--accent)', border: '1.5px solid var(--accent-border)' }}
+            >
+              <CloseIcon />
+            </button>
+          </div>
 
           {/* Nav links */}
-          <div className="flex flex-col gap-1 mb-5">
+          <nav className="flex flex-col px-5 pt-6 pb-4 gap-2 flex-1 overflow-y-auto">
             {links.map(({ href, label, icon }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-base transition-all"
+                className="flex items-center gap-4 px-5 py-4 rounded-2xl font-semibold text-lg"
                 style={{
-                  color:      isActive(href) ? 'var(--accent)' : 'var(--text)',
-                  background: isActive(href) ? 'var(--accent-bg)' : 'transparent',
-                  borderLeft: isActive(href) ? '3px solid var(--accent)' : '3px solid transparent',
+                  color:      isActive(href) ? '#ffffff' : 'var(--text)',
+                  background: isActive(href)
+                    ? 'linear-gradient(135deg, #D97706, #EA580C)'
+                    : 'var(--bg-alt)',
+                  border: `1.5px solid ${isActive(href) ? 'transparent' : 'var(--border)'}`,
                 }}
               >
-                <span className="text-xl w-7 text-center">{icon}</span>
+                <span className="text-2xl w-8 text-center">{icon}</span>
                 {label}
                 {isActive(href) && (
-                  <span className="ml-auto text-xs font-bold" style={{ color: 'var(--accent)' }}>●</span>
+                  <span className="ml-auto text-white opacity-80">→</span>
                 )}
               </Link>
             ))}
-          </div>
+          </nav>
 
-          {/* CTA button */}
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="btn-primary justify-center py-3.5 text-base mb-5"
-          >
-            {tr.nav.cta}
-          </Link>
+          {/* Bottom section */}
+          <div className="px-5 pb-8 flex flex-col gap-4 flex-shrink-0">
+            {/* CTA */}
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="btn-primary justify-center py-4 text-base rounded-2xl"
+            >
+              {tr.nav.cta}
+            </Link>
 
-          {/* Language + Theme row */}
-          <div
-            className="flex items-center justify-between pt-4"
-            style={{ borderTop: '1px solid var(--border)' }}
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-subtle)' }}>Language</span>
-              <div
-                className="flex items-center gap-0.5 rounded-lg px-1 py-1"
-                style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)' }}
-              >
-                {LANGS.map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => { setLang(l) }}
-                    className={`lang-btn ${lang === l ? 'active' : ''}`}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                ))}
+            {/* Language + Theme */}
+            <div
+              className="flex items-center justify-between p-4 rounded-2xl"
+              style={{ background: 'var(--bg-alt)', border: '1.5px solid var(--border)' }}
+            >
+              {/* Language picker */}
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--text-subtle)' }}>
+                  Language
+                </span>
+                <div className="flex items-center gap-1">
+                  {LANGS.map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => setLang(l)}
+                      className="px-3 py-1.5 rounded-lg text-sm font-bold transition-all"
+                      style={{
+                        background: lang === l ? 'linear-gradient(135deg, #D97706, #EA580C)' : 'var(--bg)',
+                        color:      lang === l ? '#ffffff' : 'var(--text-muted)',
+                        border:     `1.5px solid ${lang === l ? 'transparent' : 'var(--border)'}`,
+                      }}
+                    >
+                      {l.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Theme toggle */}
+              <div className="flex flex-col items-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--text-subtle)' }}>
+                  Theme
+                </span>
+                <button
+                  onClick={toggle}
+                  className="flex items-center justify-center w-10 h-10 rounded-xl"
+                  style={{ background: 'var(--bg)', border: '1.5px solid var(--border)', color: 'var(--text-muted)' }}
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+                </button>
               </div>
             </div>
-
-            <button
-              className="theme-toggle"
-              onClick={toggle}
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <MoonIcon /> : <SunIcon />}
-            </button>
           </div>
-
-        </nav>
-      </div>
+        </div>
+      )}
     </>
   )
 }
