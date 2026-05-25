@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { useLang } from '@/components/Providers'
 import { t } from '@/lib/i18n'
 
-/* ── Unsplash images per service ── */
+/* ── Slide images per service ── */
 const SLIDE_IMAGES = [
-  'https://images.unsplash.com/photo-1567789884554-0b2b7b91e0b8?w=1920&q=90&auto=format&fit=crop',  // industrial robotic arms — manufacturing process, no cars
+  '/auto-hero.svg',  // custom automotive consulting blueprint illustration
   'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=85&auto=format&fit=crop',  // construction cranes
   'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=85&auto=format&fit=crop',  // luxury real estate
   'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1920&q=85&auto=format&fit=crop',  // clean manufacturing
