@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme, useLang } from './Providers'
@@ -27,15 +27,18 @@ function MoonIcon() {
 }
 function MenuIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
     </svg>
   )
 }
 function CloseIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
     </svg>
   )
 }
@@ -47,109 +50,185 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const tr = t(lang)
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  // Close on route change
+  useEffect(() => { setOpen(false) }, [pathname])
+
   const links = [
-    { href: '/',         label: tr.nav.home },
-    { href: '/about',    label: tr.nav.about },
-    { href: '/services', label: tr.nav.services },
-    { href: '/contact',  label: tr.nav.contact },
+    { href: '/',         label: tr.nav.home,     icon: '🏠' },
+    { href: '/about',    label: tr.nav.about,    icon: '👥' },
+    { href: '/services', label: tr.nav.services, icon: '⚙️' },
+    { href: '/contact',  label: tr.nav.contact,  icon: '✉️' },
   ]
 
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   return (
-    <header className="navbar fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+    <>
+      <header className="navbar fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
 
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 flex-shrink-0" onClick={() => setOpen(false)}>
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-sm shadow">
-            G
-          </div>
-          <span className="font-extrabold text-lg" style={{ color: 'var(--text)' }}>Gretias Consulting</span>
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              style={{
-                color:      isActive(href) ? 'var(--accent)' : 'var(--text-muted)',
-                background: isActive(href) ? 'var(--accent-bg)' : 'transparent',
-              }}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Right controls */}
-        <div className="flex items-center gap-2">
-
-          {/* Language switcher */}
-          <div
-            className="hidden sm:flex items-center gap-0.5 rounded-lg px-1 py-1"
-            style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)' }}
-          >
-            {LANGS.map((l) => (
-              <button key={l} onClick={() => setLang(l)} className={`lang-btn ${lang === l ? 'active' : ''}`}>
-                {l.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          {/* Theme toggle */}
-          <button className="theme-toggle" onClick={toggle} aria-label="Toggle theme">
-            {theme === 'light' ? <MoonIcon /> : <SunIcon />}
-          </button>
-
-          {/* CTA desktop */}
-          <Link href="/contact" className="btn-primary hidden md:inline-flex py-2 px-4 text-sm">
-            {tr.nav.cta}
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 min-w-0" onClick={() => setOpen(false)}>
+            <div className="w-8 h-8 flex-shrink-0 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-sm shadow">
+              G
+            </div>
+            <span className="font-extrabold text-base sm:text-lg truncate" style={{ color: 'var(--text)' }}>
+              <span className="hidden xs:inline">Gretias </span>Consulting
+            </span>
           </Link>
 
-          {/* Mobile menu */}
-          <button className="md:hidden theme-toggle" onClick={() => setOpen(!open)} aria-label="Toggle menu">
-            {open ? <CloseIcon /> : <MenuIcon />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile drawer */}
-      {open && (
-        <div className="md:hidden border-t" style={{ background: 'var(--bg)', borderColor: 'var(--border)' }}>
-          <nav className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                onClick={() => setOpen(false)}
-                className="px-4 py-3 rounded-xl text-sm font-semibold transition-colors"
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 style={{
-                  color:      isActive(href) ? 'var(--accent)' : 'var(--text)',
+                  color:      isActive(href) ? 'var(--accent)' : 'var(--text-muted)',
                   background: isActive(href) ? 'var(--accent-bg)' : 'transparent',
                 }}
               >
                 {label}
               </Link>
             ))}
-            <div className="flex items-center gap-1 mt-3 pt-3" style={{ borderTop: '1px solid var(--border)' }}>
-              <span className="text-xs mr-2" style={{ color: 'var(--text-subtle)' }}>Lang:</span>
+          </nav>
+
+          {/* Right controls */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+
+            {/* Language switcher — desktop only */}
+            <div
+              className="hidden md:flex items-center gap-0.5 rounded-lg px-1 py-1"
+              style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)' }}
+            >
               {LANGS.map((l) => (
-                <button key={l} onClick={() => { setLang(l); setOpen(false) }} className={`lang-btn ${lang === l ? 'active' : ''}`}>
+                <button key={l} onClick={() => setLang(l)} className={`lang-btn ${lang === l ? 'active' : ''}`}>
                   {l.toUpperCase()}
                 </button>
               ))}
             </div>
-            <Link href="/contact" onClick={() => setOpen(false)} className="btn-primary mt-2 justify-center">
+
+            {/* Theme toggle */}
+            <button className="theme-toggle" onClick={toggle} aria-label="Toggle theme">
+              {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+            </button>
+
+            {/* CTA — desktop only */}
+            <Link href="/contact" className="btn-primary hidden md:inline-flex py-2 px-4 text-sm">
               {tr.nav.cta}
             </Link>
-          </nav>
+
+            {/* Hamburger */}
+            <button
+              className="md:hidden theme-toggle"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              {open ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
         </div>
+      </header>
+
+      {/* Mobile full-screen overlay */}
+      {open && (
+        <div
+          className="md:hidden fixed inset-0 z-40"
+          style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setOpen(false)}
+        />
       )}
-    </header>
+
+      {/* Mobile slide-down drawer */}
+      <div
+        className="md:hidden fixed left-0 right-0 z-40"
+        style={{
+          top: '64px',
+          background: 'var(--bg)',
+          borderBottom: '1px solid var(--border)',
+          boxShadow: '0 16px 48px rgba(0,0,0,0.18)',
+          transform: open ? 'translateY(0)' : 'translateY(-110%)',
+          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          pointerEvents: open ? 'auto' : 'none',
+        }}
+      >
+        <nav className="px-4 pt-4 pb-6 flex flex-col">
+
+          {/* Nav links */}
+          <div className="flex flex-col gap-1 mb-5">
+            {links.map(({ href, label, icon }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-base transition-all"
+                style={{
+                  color:      isActive(href) ? 'var(--accent)' : 'var(--text)',
+                  background: isActive(href) ? 'var(--accent-bg)' : 'transparent',
+                  borderLeft: isActive(href) ? '3px solid var(--accent)' : '3px solid transparent',
+                }}
+              >
+                <span className="text-xl w-7 text-center">{icon}</span>
+                {label}
+                {isActive(href) && (
+                  <span className="ml-auto text-xs font-bold" style={{ color: 'var(--accent)' }}>●</span>
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA button */}
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="btn-primary justify-center py-3.5 text-base mb-5"
+          >
+            {tr.nav.cta}
+          </Link>
+
+          {/* Language + Theme row */}
+          <div
+            className="flex items-center justify-between pt-4"
+            style={{ borderTop: '1px solid var(--border)' }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--text-subtle)' }}>Language</span>
+              <div
+                className="flex items-center gap-0.5 rounded-lg px-1 py-1"
+                style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)' }}
+              >
+                {LANGS.map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => { setLang(l) }}
+                    className={`lang-btn ${lang === l ? 'active' : ''}`}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button
+              className="theme-toggle"
+              onClick={toggle}
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+            </button>
+          </div>
+
+        </nav>
+      </div>
+    </>
   )
 }
