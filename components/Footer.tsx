@@ -58,12 +58,12 @@ export default function Footer() {
             <ul className="space-y-2 text-sm" style={{ color: 'var(--text-muted)' }}>
               <li>
                 <a
-                  href="mailto:hello@gretias.com"
+                  href="mailto:business@gretiasconsulting.com"
                   className="transition-colors"
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                 >
-                  hello@gretias.com
+                  business@gretiasconsulting.com
                 </a>
               </li>
               <li>

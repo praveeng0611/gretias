@@ -151,10 +151,10 @@ export default function Contact() {
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
                   <span className="text-lg">📧</span>
-                  <a href="mailto:hello@gretias.com" className="transition-colors" style={{ color: 'var(--text-muted)' }}
+                  <a href="mailto:business@gretiasconsulting.com" className="transition-colors" style={{ color: 'var(--text-muted)' }}
                      onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                      onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}>
-                    hello@gretias.com
+                    business@gretiasconsulting.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
