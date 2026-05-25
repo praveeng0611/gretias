@@ -5,11 +5,11 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Gretias — Strategic Consulting & Advisory',
+  title: 'Gretias Consulting — Strategic Advisory',
   description: 'Strategic consulting for Automotive, Turnkey Projects, Real Estate, and Plant Setup & Manufacturing Advisory. Clarity in complexity.',
   metadataBase: new URL('https://gretias.gnosisolabs.com'),
   openGraph: {
-    title: 'Gretias — Strategic Consulting & Advisory',
+    title: 'Gretias Consulting — Strategic Advisory',
     description: 'Automotive Consulting, Turnkey Projects, Real Estate, and Plant Setup & Manufacturing Advisory.',
     url: 'https://gretias.gnosisolabs.com',
     siteName: 'Gretias',

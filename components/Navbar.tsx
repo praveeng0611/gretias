@@ -66,7 +66,7 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-sm shadow">
             G
           </div>
-          <span className="font-extrabold text-lg" style={{ color: 'var(--text)' }}>Gretias</span>
+          <span className="font-extrabold text-lg" style={{ color: 'var(--text)' }}>Gretias Consulting</span>
         </Link>
 
         {/* Desktop nav */}

@@ -25,7 +25,7 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-sm">
                 G
               </div>
-              <span className="font-extrabold text-lg" style={{ color: 'var(--text)' }}>Gretias</span>
+              <span className="font-extrabold text-lg" style={{ color: 'var(--text)' }}>Gretias Consulting</span>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
               {tr.footer.tagline}
@@ -96,7 +96,7 @@ export default function Footer() {
 
         <div className="divider pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm" style={{ color: 'var(--text-subtle)' }}>
-            © {new Date().getFullYear()} Gretias. {tr.footer.copyright}
+            © {new Date().getFullYear()} Gretias Consulting. {tr.footer.copyright}
           </p>
           <p className="text-xs" style={{ color: 'var(--text-subtle)' }}>{tr.footer.builtBy}</p>
         </div>
